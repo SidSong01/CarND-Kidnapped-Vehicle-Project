@@ -1,3 +1,8 @@
+[//]: # (Image References)
+
+[image1]: ./1.png
+[image2]: ./2.png
+
 # Overview
 This repository contains all the code needed to complete the final project for the Localization course in Udacity's Self-Driving Car Nanodegree.
 
@@ -17,13 +22,14 @@ This repository includes two files that can be used to set up and install uWebSo
 
 Once the install for uWebSocketIO is complete, the main program can be built and ran by doing the following from the project top directory.
 
-```
-1. mkdir build
-2. cd build
-3. cmake ..
-4. make
-5. ./particle_filter
-```
+* Compile
+1. `mkdir build && cd build`
+
+2. `cmake .. && make`
+
+* Run 
+`./particle_filter`
+
 
 Alternatively some scripts have been included to streamline this process, these can be leveraged by executing the following in the top directory of the project:
 
@@ -142,3 +148,10 @@ The things the grading code is looking for are:
 
 2. **Performance**: your particle filter should complete execution within the time of 100 seconds.
 
+## Result
+
+* Compile
+![alt text][image1]
+
+* Running
+![alt text][image2]
