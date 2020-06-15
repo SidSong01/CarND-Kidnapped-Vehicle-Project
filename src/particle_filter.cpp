@@ -95,13 +95,13 @@ void ParticleFilter::dataAssociation(vector<LandmarkObs> predicted,
    *   probably find it useful to implement this method and use it as a helper 
    *   during the updateWeights phase.
    */
-  for(int i =0; i < observations.size();i++) {
+  for(unsigned int i =0; i < observations.size();i++) {
     LandmarkObs obser = observations[i];
     double min_d = 10000.0;
     int id_close = -1;
     int predict_index;
 
-    for(int j = 0; j < predicted.size(); j++) {
+    for(unsigned int j = 0; j < predicted.size(); j++) {
       LandmarkObs predict = predicted[j];
       double d = (obser.x - predict.x) * (obser.x - predict.x) + (obser.y - predict.y) * (obser.y - predict.y);
       if(d < min_d) {
@@ -140,7 +140,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     particles[i].weight = 1.0;
     
     // coordinate system transfer from Vehicle to Map
-    for(int j=0; j<map_landmarks.landmark_list.size();j++) {
+    for(unsigned int j=0; j<map_landmarks.landmark_list.size();j++) {
       Map::single_landmark_s lm = map_landmarks.landmark_list[j];
       double land_x = lm.x_f;
       double land_y = lm.y_f;
@@ -156,7 +156,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     }
     vector<LandmarkObs> observations_trans;
     // landmarks that have the distance between particle less than the sensor_range
-    for(int k=0; k<observations.size(); k++) {
+    for(unsigned int k=0; k<observations.size(); k++) {
       double ob_x = observations[k].x;
       double ob_y = observations[k].y;
       int ob_id = observations[k].id;
@@ -172,13 +172,13 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     double std_x = std_landmark[0];
     double std_y = std_landmark[1];
     double nomer = 1.0/(2*M_PI*std_x*std_y);
-    for(int l=0;l< observations_trans.size();l++) {
+    for(unsigned int l=0; l< observations_trans.size(); l++) {
       double ob_tr_x = observations_trans[l].x;
       double ob_tr_y = observations_trans[l].y;
       int ob_tr_id = observations_trans[l].id;
       
       // update weights
-      for(int m=0; m<predict.size(); m++) {
+      for(unsigned int m=0; m<predict.size(); m++) {
         double pred_x = predict[m].x;
         double pred_y = predict[m].y;
         double pred_id = predict[m].id;
